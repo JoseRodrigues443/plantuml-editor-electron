@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="jquery_plantuml.js"></script>
+	<!-- rawdeflate.js is implicity used by jquery_plantuml.js -->
     <meta charset="UTF-8">
     <title>Hello World!</title>
   </head>
@@ -10,6 +13,20 @@
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+    
+    <hr>
+	<img uml="
+		Bob->Alice : foo
+		Bob<--Alice : foo
+		">
+	<hr>
+	<img uml="
+	Bob->Alice : dummy
+	Bob<--Alice : dummy
+		">
+
+
+    
   </body>
 
   <script>
