@@ -1,0 +1,40 @@
+@startuml IPC01.1_TCP_send_cell.png
+    skinparam handwritten false
+    skinparam monochrome false
+    skinparam packageStyle rect
+    skinparam defaultFontName FG Virgil
+    skinparam shadowing false
+
+  box "Share Cell Extension TCP cell sender"
+    participant "ShareCellExtension"
+    participant "ShareCellController"
+    participant "ExtensionConnectionManager"
+    participant "ObjectConnectionTCP"
+    participant "SenderTCP"
+    participant "Socket"
+    participant "DataOutputStream"
+  end box
+
+create ShareCellController 
+    ShareCellExtension -> ShareCellController : new()
+    ShareCellExtension -> ShareCellController : shareSelectedCells()
+create ExtensionConnectionManager 
+    ShareCellController -> ExtensionConnectionManager : new()
+    ShareCellController -> ExtensionConnectionManager : cellMatrix = getSelectedCells()
+create ObjectConnectionTCP 
+    ExtensionConnectionManager -> ObjectConnectionTCP : new(tcpPort)
+    ExtensionConnectionManager -> ObjectConnectionTCP : serverSendMessage(message, addressToSend)
+create SenderTCP
+    ObjectConnectionTCP -> SenderTCP : new(message, addressToSend)
+create Socket
+    SenderTCP -> Socket : socket = new Socket(ipAddress , tcpPort); 
+    ObjectConnectionTCP -> SenderTCP : send()
+
+create DataOutputStream
+    SenderTCP -> DataOutputStream : new DataOutputStream(socket) 
+    SenderTCP -> SenderTCP : send()
+    note left of SenderTCP : it sends the object to another\n instance in the network
+
+
+@enduml
+

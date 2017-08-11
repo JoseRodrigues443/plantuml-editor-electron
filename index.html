@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="jquery_plantuml.js"></script>
-	<!-- rawdeflate.js is implicity used by jquery_plantuml.js -->
-    
-  </head>
 
-  <body>
-  
-  
-    <h1>Example of Working uml</h1>
+    <!-- CSS theme -->
+    <link rel="stylesheet" type="text/css" href="CSS/theme.css">
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jquery_plantuml.js"></script>
+    <!-- rawdeflate.js is implicity used by jquery_plantuml.js -->
+
+</head>
+
+<body onload="fillTextArea()">
+    <header>
+        <h1>PlantUml Editor</h1>
+      
+    </header>
+
+    <nav>
+				<textarea id="myTextarea" name="styled-textarea" onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')">
+					Insert here the plantUml code...
+				</textarea>
+					<button type="button" onclick="alterDivWithPlantUml()">Try it</button>
+        
+    </nav>
+
+    <article id = "plantUml">
+        <!--<iframe id="iframeElement" src="welcomeIframe.html"></iframe>-->
     
-<hr>
-<img uml="
+        <h1>Generated PlantUml</h1>    
+		<hr>
+		<img uml="
 Bob->Alice : foo
 Bob<--Alice : foo
 ">
 <hr>
-<img uml="
-Bob->Alice : dummy
-Bob<--Alice : dummy
-">
+</article>
+</body>
+<script>
+	
+	 function fillTextArea() {
+			  $('#myTextarea').load("plantUmlExample.puml");
+	};
+	
+	function alterDivWithPlantUml(){
+		var x = document.getElementById("myTextarea").value;
+		var string = "<h1>Generated PlantUml</h1>\n<hr>\n<img uml=\"Muahhahah->Alice : foo\nBob<--Alice : foo\n\">\n<hr>";
+		var myDiv = document.getElementById("plantUml");
+		myDiv.innerHTML = string;
+		plantuml_runonce();
+	}
+</script>
 
-
-
-    
-  </body>
-
-  <script>
+<script>
     // You can also require other files to run in this process
     require('./renderer.js')
-  </script>
+</script>
+
 </html>
