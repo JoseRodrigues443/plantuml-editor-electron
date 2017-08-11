@@ -49,6 +49,7 @@ Bob<--Alice : foo
 	function alterDivWithPlantUml(){
 		var x = document.getElementById("myTextarea").value;
 		var string = "<h1>Generated PlantUml</h1>\n<hr>\n<img uml=\"Muahhahah->Alice : foo\nBob<--Alice : foo\n\">\n<hr>";
+		
 		var myDiv = document.getElementById("plantUml");
 		myDiv.innerHTML = string;
 		plantuml_runonce();
