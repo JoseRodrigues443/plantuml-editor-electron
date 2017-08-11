@@ -82,7 +82,7 @@
  nav{
 	 background-color:rgba(177, 216, 197, 0.8);
 	 float: left;
-	 width: 25%;
+	 width: 40%;
 	 height: 80%;
 	 margin: 0;
 	 padding: 1em;
@@ -141,7 +141,7 @@
  }
  
  
-textarea#myTextarea {
+textarea#myTextArea {
 	 width: 90%;
 	 height: 90%;
 	 border: 3px solid #cccccc;
@@ -162,7 +162,10 @@ textarea#myTextarea {
 	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.2);
 }
  
- 
+#plantUml{
+	overflow: auto;
+	max-height: 100vh;
+}
  
  
  

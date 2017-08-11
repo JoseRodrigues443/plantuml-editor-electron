@@ -14,46 +14,64 @@
 
 </head>
 
-<body onload="fillTextArea()">
+<body onload="loader()">
     <header>
         <h1>PlantUml Editor</h1>
-      
+
     </header>
 
     <nav>
-				<textarea id="myTextarea" name="styled-textarea" onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')">
-					Insert here the plantUml code...
-				</textarea>
-					<button type="button" onclick="alterDivWithPlantUml()">Try it</button>
-        
+        <textarea id="myTextArea" name="styled-textarea" onfocus="setbg('#e5fff3');" onblur="setbg('white')">
+            Insert here the plantUml code...
+        </textarea>
+        <button type="button" onclick="alterDivWithPlantUml()">Try it</button>
+        <button type="button" onclick="fillTextArea()">Insert example</button>
+
     </nav>
 
-    <article id = "plantUml">
+    <article id="plantUml">
         <!--<iframe id="iframeElement" src="welcomeIframe.html"></iframe>-->
-    
-        <h1>Generated PlantUml</h1>    
-		<hr>
-		<img uml="
+
+        <h1>Generated PlantUml</h1>
+        <hr>
+        <img uml='
 Bob->Alice : foo
 Bob<--Alice : foo
-">
-<hr>
-</article>
+'>
+        <hr>
+    </article>
 </body>
 <script>
-	
-	 function fillTextArea() {
-			  $('#myTextarea').load("plantUmlExample.puml");
-	};
-	
-	function alterDivWithPlantUml(){
-		var x = document.getElementById("myTextarea").value;
-		var string = "<h1>Generated PlantUml</h1>\n<hr>\n<img uml=\"Muahhahah->Alice : foo\nBob<--Alice : foo\n\">\n<hr>";
-		
-		var myDiv = document.getElementById("plantUml");
-		myDiv.innerHTML = string;
-		plantuml_runonce();
-	}
+    function loader() {
+        //mainWindow.maximize() 
+        $('#myTextArea').load("plantUmlExample.puml");
+    }
+	/**
+		reads from file and alters the textArea
+	**/
+    function fillTextArea() {
+        //document.getElementById("myTextArea").value = "Fifth Avenue, New York City";
+
+        const fs = require("fs");
+        // Synchronous read
+        var data = fs.readFileSync('plantUmlExample.puml');
+        $('#myTextArea').val(data);
+
+        //console.log("Synchronous read: " + data.toString());
+    }
+
+    /**
+		alters the dib to generate the plant Uml
+    **/
+    function alterDivWithPlantUml() {
+        var x = document.getElementById("myTextArea").value;
+        var string = "<h1>Generated PlantUml</h1>\n<img uml=\'" + x + "\'>";
+        string.replace("\"", "\\\"");
+
+        var myDiv = document.getElementById("plantUml");
+        myDiv.innerHTML = string;
+        plantuml_runonce();    //reruns the Jquery for plantUml rendering
+    }
 </script>
 
 <script>
@@ -62,3 +80,5 @@ Bob<--Alice : foo
 </script>
 
 </html>
+
+
