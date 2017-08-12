@@ -3,82 +3,138 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>PlantUml Editor</title>
 
     <!-- CSS theme -->
-    <link rel="stylesheet" type="text/css" href="CSS/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
 
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="jquery_plantuml.js"></script>
     <!-- rawdeflate.js is implicity used by jquery_plantuml.js -->
 
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body onload="loader()">
-    <header>
-        <h1>PlantUml Editor</h1>
+    <div class="tabbable" id="tabs-899508">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#panel-845665" data-toggle="tab">PlantUml Editor</a>
+            </li>
+            <li>
+                <a href="#panel-295144" data-toggle="tab">Etc 2</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="panel-845665">
+                <header>
+                    <h1>PlantUml Editor</h1>
+                </header>
+                <nav id="navPlantUmlEditor">
+                    <textarea id="myTextArea" name="styled-textarea" onfocus="setbg('#e5fff3');" onblur="setbg('white')">
+                        Insert here the plantUml code...
+                    </textarea>
+                     <button type="button" class="btn btn-success btn-lg" onclick="alterDivWithPlantUml()">Generate Image</button>
+                     <button type="button" class="btn btn-success btn-lg" onclick="fillTextArea()">Example</button>
+                    
 
-    </header>
+                </nav>
+                <article id="plantUml">
+                    <!--<iframe id="iframeElement" src="welcomeIframe.html"></iframe>-->
 
-    <nav>
-        <textarea id="myTextArea" name="styled-textarea" onfocus="setbg('#e5fff3');" onblur="setbg('white')">
-            Insert here the plantUml code...
-        </textarea>
-        <button type="button" onclick="alterDivWithPlantUml()">Try it</button>
-        <button type="button" onclick="fillTextArea()">Insert example</button>
-
-    </nav>
-
-    <article id="plantUml">
-        <!--<iframe id="iframeElement" src="welcomeIframe.html"></iframe>-->
-
-        <h1>Generated PlantUml</h1>
-        <hr>
-        <img uml='
+                    <h1>Generated PlantUml</h1>
+                    <hr>
+                    <img uml='
 Bob->Alice : foo
 Bob<--Alice : foo
 '>
-        <hr>
-    </article>
-</body>
-<script>
-    function loader() {
-        //mainWindow.maximize() 
-        $('#myTextArea').load("plantUmlExample.puml");
-    }
-	/**
-		reads from file and alters the textArea
-	**/
-    function fillTextArea() {
-        //document.getElementById("myTextArea").value = "Fifth Avenue, New York City";
 
-        const fs = require("fs");
-        // Synchronous read
-        var data = fs.readFileSync('plantUmlExample.puml');
-        $('#myTextArea').val(data);
+                    </img>
+					
+                    <hr>
+                </article>
+            </div>
+            <div class="tab-pane" id="panel-295144">
+                <p>
+                    Not implemented Yet
+                </p>
+            </div>
+        </div>
+    </div>
 
-        //console.log("Synchronous read: " + data.toString());
-    }
+    <script>
+        function loader() {
+            //mainWindow.maximize() 
+            $('#myTextArea').load("plantUmlExample.puml");
+        }
+        /**
+        	reads from file and alters the textArea
+        **/
+        function fillTextArea() {
+            //document.getElementById("myTextArea").value = "Fifth Avenue, New York City";
 
-    /**
+            const fs = require("fs");
+            // Synchronous read
+            var data = fs.readFileSync('plantUmlExample.puml');
+            $('#myTextArea').val(data);
+
+            //console.log("Synchronous read: " + data.toString());
+        }
+
+        /**
 		alters the dib to generate the plant Uml
     **/
-    function alterDivWithPlantUml() {
-        var x = document.getElementById("myTextArea").value;
-        var string = "<h1>Generated PlantUml</h1>\n<img uml=\'" + x + "\'>";
-        string.replace("\"", "\\\"");
+        function alterDivWithPlantUml() {
+            var x = document.getElementById("myTextArea").value;
+            var string = "";
+            string += "<button type=\"button\" class=\"btn btn-success btn-lg\" onclick=\"downloadImage()\">Download Picture</button>";
+            string += "\n<img id =\"plantUmlPicture\" uml=\'" + x + "\'>";
+            string.replace("\"", "\\\"");
 
-        var myDiv = document.getElementById("plantUml");
-        myDiv.innerHTML = string;
-        plantuml_runonce();    //reruns the Jquery for plantUml rendering
-    }
-</script>
+            var myDiv = document.getElementById("plantUml");
+            myDiv.innerHTML = string;
+            plantuml_runonce(); //reruns the Jquery for plantUml rendering
+        }
+        
+        function downloadImage(){
+			var link = document.createElement('a');
+			link.download = document.getElementById("plantUmlPicture").src;
+			link.href = document.getElementById("plantUmlPicture").src;
+			link.click();
+        }
+        
+    </script>
 
-<script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-</script>
+    <script>
+        // You can also require other files to run in this process
+        require('./renderer.js')
+    </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
 
 </html>
-
-
