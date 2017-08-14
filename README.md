@@ -31,7 +31,11 @@ https://www.alexkras.com/building-a-simple-stopwatch-app-with-electron/
   $ cd FirstElectronApplication
   $ npm install
   $ npm start
+  
+## Screenshot
 
+![plantuml editor_036](https://user-images.githubusercontent.com/16213184/29267949-c7443978-80e2-11e7-9b97-4a838f9efc72.png)
 
+![plantuml editor_038](https://user-images.githubusercontent.com/16213184/29268002-fbfb32ca-80e2-11e7-9c97-ef001a570ea8.png)
 
 
