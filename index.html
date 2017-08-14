@@ -30,14 +30,17 @@
     <div class="tabbable" id="tabs-899508">
         <ul class="nav nav-tabs">
             <li class="active">
-                <a href="#panel-845665" data-toggle="tab">PlantUml Editor</a>
+                <a href="#panel-1" data-toggle="tab">PlantUml Editor</a>
             </li>
             <li>
-                <a href="#panel-295144" data-toggle="tab">Etc 2</a>
+                <a href="#panel-2" data-toggle="tab">Help</a>
+            </li>
+            <li>
+                <a href="#panel-3" data-toggle="tab">Licensing</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="panel-845665">
+            <div class="tab-pane active" id="panel-1">
                 <header>
                     <h1>PlantUml Editor</h1>
                 </header>
@@ -65,10 +68,15 @@ Bob<--Alice : foo
                     <hr>
                 </article>
             </div>
-            <div class="tab-pane" id="panel-295144">
+            <div class="tab-pane" id="panel-2">
                 <p>
                     Not implemented Yet
                 </p>
+            </div>
+            <div class="tab-pane" id="panel-3">
+                <textarea id="license">
+                
+				</textarea>
             </div>
         </div>
     </div>
@@ -77,6 +85,7 @@ Bob<--Alice : foo
         function loader() {
             //mainWindow.maximize() 
             $('#myTextArea').load("plantUmlExample.puml");
+            $('#license').load("LICENSE");
         }
         /**
         	reads from file and alters the textArea

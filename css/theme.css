@@ -172,6 +172,13 @@
 	height:87%;
 }
  
+ textarea#license {
+	 width: 100%;
+	 height:114.6%;
+	 -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	 -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	 box-sizing: border-box;         /* Opera/IE 8+ */
+ }
  
  
  
