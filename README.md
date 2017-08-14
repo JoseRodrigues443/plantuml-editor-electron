@@ -18,11 +18,11 @@ https://www.alexkras.com/building-a-simple-stopwatch-app-with-electron/
 
 * Dependencies
 
-* * NPM
+> * NPM
 
-* * GIT
+> * GIT
 
-* * Graphviz (see: http://www.graphviz.org)
+> * Graphviz (see: http://www.graphviz.org)
 
 
 * In command line
