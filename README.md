@@ -1,4 +1,4 @@
-# Fisrt Electro nApplication
+# Fisrt Electron Application
 
 Creation of a simple atom application that uses a already existing service (in this case PlantUml).
 
