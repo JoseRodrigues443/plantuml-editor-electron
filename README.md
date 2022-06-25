@@ -1,10 +1,10 @@
-# FisrtElectronApplication
+# Fisrt Electro nApplication
 
 Creation of a simple atom application that uses a already existing service (in this case PlantUml).
 
 ## Based in:
 
-Simple toturial:
+Simple tutorial:
 https://www.alexkras.com/building-a-simple-stopwatch-app-with-electron/
 
 ## Used tools:
