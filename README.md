@@ -1,4 +1,4 @@
-# Fisrt Electron Application
+# PlantUml Electron Editor/Viewer 
 
 Creation of a simple atom application that uses a already existing service (in this case PlantUml).
 
